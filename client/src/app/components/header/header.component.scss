@@ -1,0 +1,38 @@
+.spacer{
+    margin-left: 30px;
+}
+
+button{
+    background-color: rgb(63,189,237);
+}
+.input {
+    padding-top: 10px;
+}
+.colorPicker{
+    height: 100%;
+    width: 150px;
+}
+
+.example-form-field {
+    width: 110px;
+  }
+
+.example-form-field2 {
+width: 200px;
+}
+
+.first {
+    width: 100%;
+    position: absolute;
+    top: 3%;
+    left: 90%;
+
+}
+  
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+    font-size: 14px;
+  }
+  
+  ::ng-deep .mat-form-field-empty.mat-form-field-label {
+      font-size: 14px;
+  }

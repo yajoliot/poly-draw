@@ -1,0 +1,19 @@
+mat-slider {
+    transform: scale(2);
+    margin-left: 15%;
+}
+
+.inputRGB{
+    margin-left: 70px;
+}
+
+::ng-deep .mat-accent .mat-slider-thumb{
+    background-color: rgb(63,189,237);
+} 
+
+::ng-deep .mat-accent .mat-slider-thumb-label {
+    background-color: rgb(63,189,237);
+} 
+::ng-deep .mat-accent .mat-slider-track-fill {
+    background-color: rgb(63,189,237);
+} 

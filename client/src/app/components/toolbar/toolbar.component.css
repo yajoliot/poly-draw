@@ -1,0 +1,44 @@
+ button {
+    width: 100%;
+    padding: 0;
+    height: 5vh;
+    background-color: rgb(2,116,169);
+    color: white;
+    margin: 1%;
+}
+.second {
+    width: 100%;
+    position: absolute;
+    bottom: 37px;
+}
+.first {
+    width: 100%;
+    position: absolute;
+
+    bottom: 2%;
+
+}
+
+.second {
+    width: 100%;
+    position: absolute;
+
+    bottom: 8%;
+
+}
+.third {
+    width: 100%;
+    position: absolute;
+
+    bottom: 14%;
+
+}
+
+.fourth {
+    width: 100%;
+    position: absolute;
+
+    bottom: 20%; 
+}
+
+

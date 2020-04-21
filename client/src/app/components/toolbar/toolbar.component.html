@@ -1,0 +1,129 @@
+
+    <button mat-button
+    #Pencil 
+    (click)="selectTool('Pencil')"
+    matTooltipPosition="after"
+    matTooltip="Crayon">
+    <mat-icon>edit</mat-icon>
+    </button>
+
+    <button mat-button 
+    #Brush
+    (click)="selectTool('Brush')"
+    matTooltipPosition="after"
+    matTooltip="Pinceau">
+    <mat-icon>brush</mat-icon>
+    </button>
+
+    <button mat-button
+    #Line
+    (click)="selectTool('Line')"
+    matTooltipPosition="after"
+    matTooltip="Ligne">
+    <mat-icon>remove</mat-icon>
+    </button>
+    
+    
+    <button mat-button 
+    #Rectangle
+    (click)="selectTool('Rectangle')"
+    matTooltipPosition="after"
+    matTooltip="Rectangle">
+    <i class="material-icons">check_box_outline_blank</i></button>
+
+    <button mat-button
+    #Ellipse
+    (click)="selectTool('Ellipse')"
+    matTooltipPosition="after"
+    matTooltip="Ellipse">
+    <i class="material-icons">radio_button_unchecked</i></button>
+    
+    <button mat-button
+    #Grid
+    (click)="selectTool('Grid')"
+    matTooltipPosition="after"
+    matTooltip="Grille">
+    <i class="material-icons">grid_on</i></button>
+    
+    <button mat-button
+    #Polygon
+    (click)="selectTool('Polygon')"
+    matTooltipPosition="after"
+    matTooltip="Polygone">
+    <mat-icon>star</mat-icon>
+    </button>
+    
+    <button mat-button
+    #Selection
+    (click)="selectTool('Selection')"
+    matTooltipPosition="after"
+    matTooltip="Sélection">
+    <mat-icon>select_all</mat-icon>
+    </button>
+
+    <button mat-button
+    #Spray
+    (click)="selectTool('Spray')"
+    matTooltipPosition="after"
+    matTooltip="Aérosol">
+    <mat-icon>bubble_chart</mat-icon>
+    </button>
+
+
+    <button mat-button
+    #Pipette
+    (click)="selectTool('Pipette')"
+    matTooltipPosition="after"
+    matTooltip="Pipette">
+    <mat-icon>colorize</mat-icon>
+    </button>
+
+    <button mat-button
+    #Eraser
+    (click)="selectTool('Eraser')"
+    matTooltipPosition="after"
+    matTooltip="Efface">
+    <mat-icon>delete_outline</mat-icon>
+    </button>
+
+    <button mat-button
+    #Color
+    (click)="selectTool('Color')"
+    matTooltipPosition="after"
+    matTooltip="Color">
+    <mat-icon>color_lens</mat-icon>
+    </button>
+
+    <button mat-button
+    class="third"
+    (click)="openExporterDialog()"
+    matTooltipPosition="after"
+    matTooltip="Exporter le dessin"
+    [disabled]='this.configEnv.drawingSaved'>
+    <mat-icon>cloud_download</mat-icon></button>
+
+    <button 
+    class="second"
+    mat-button
+    #UserGuide
+    (click)="saveDrawingClick()"
+    matTooltipPosition="after"
+    matTooltip="Sauvegarder le dessin"
+    [disabled]='this.configEnv.drawingSaved'
+    ><mat-icon>save</mat-icon></button>
+    
+    <div class="first">
+        <button mat-button
+        #UserGuide
+        (click)="guideClick()"
+        matTooltipPosition="after"
+        matTooltip="Guide de l'utilisateur"
+        ><mat-icon>help</mat-icon></button>
+    </div>
+    <button mat-button
+    #Bucket
+    (click)="selectTool('Bucket')"
+    matTooltipPosition="after"
+    matTooltip="Bucket">
+    <mat-icon>format_paint</mat-icon>
+    </button>

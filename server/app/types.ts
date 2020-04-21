@@ -1,8 +1,8 @@
 export default {
     Server: Symbol('Server'),
     Application: Symbol('Application'),
-    IndexController: Symbol('IndexController'),
-    DateController: Symbol('DateController'),
-    IndexService: Symbol('IndexService'),
-    DateService: Symbol('DateService'),
+    DrawingController: Symbol('DrawingController'),
+    DatabaseService: Symbol('DatabaseService'),
+    MailController: Symbol('MailController'),
+    MailService: Symbol('MailService')
 };

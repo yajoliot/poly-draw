@@ -1,0 +1,58 @@
+<mat-toolbar #toolbarRef fullscreen style="background-color: rgb(2,116,169); color: white; height: 75px;"><p (click)='navigateMenuClick()'>Poly-Draw</p></mat-toolbar>
+<mat-card class="description">
+  <p>Drawings on the Server</p>
+</mat-card>
+
+<mat-card class="description" style="margin: 10px; background-color: rgb(63,189,237);">
+  <p>Filters</p>
+  <mat-form-field style="margin-right: 50px">
+    <mat-label>By Name</mat-label>
+    <input matInput [(ngModel)]="filterByName" style="margin: 2%;">
+  </mat-form-field>
+  <mat-form-field style='margin: 10px;'>
+    <mat-label>By Label</mat-label>
+    <input matInput [(ngModel)]="filterByLabel" style="margin: 2%;">
+  </mat-form-field>
+  <button mat-raised-button style="background-color: rgb(2,116,169);" (click)='applyClick()'><mat-icon>check_circle</mat-icon></button>
+  <button mat-raised-button style="background-color: red;" (click)='undoFilterClick()'><mat-icon>undo</mat-icon></button>
+</mat-card>
+
+<mat-spinner *ngIf='this.loading' style="margin:0 auto;"></mat-spinner>
+
+<mat-accordion>
+  <div *ngFor='let drawing of this.drawingMap | keyvalue'>
+    <mat-expansion-panel style='margin: 10px; background-color: rgb(2,116,169);' >
+      <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b style="font-size: larger;">{{drawing.value.name}}</b>
+      </mat-panel-title>
+      <mat-panel-description>
+          id: {{drawing.key}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+      <div><b>Width:</b> {{drawing.value.width}}</div>
+      <div><b>Height:</b> {{drawing.value.height}}</div>
+      <div><b>Background Color:</b> {{drawing.value.backgroundColor}}</div>
+      <div><b style="margin-right:10px;">Labels:</b>{{drawing.value.labels}}</div>
+
+      <div><b style="margin-right:10px;">Preview</b></div>
+      <div style=" width: 600px; height: 200px">
+        <img [src]='drawing.value.png' style="max-width: 100%; max-height: 100%;"/>
+      </div>
+      
+    <button mat-raised-button style="background-color: purple;" (click)=openDrawingClick(drawing.key)><mat-icon>open_in_new</mat-icon></button>
+    <button mat-raised-button style="background-color: red;" (click)=deleteDrawingClick(drawing.key)><mat-icon>delete</mat-icon></button>
+  </mat-expansion-panel>
+  </div>
+</mat-accordion>
+
+
+<mat-accordion *ngIf="this.drawingMap.size == 0 && !this.loading">
+  <mat-expansion-panel style='margin: 10px; background-color: red;' >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div><p><b>Pas de Dessins Disponibles</b></p></div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>

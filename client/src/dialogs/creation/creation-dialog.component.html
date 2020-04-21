@@ -1,0 +1,49 @@
+<mat-toolbar style="margin-bottom: 5%; background-color: rgb(2,116,169);">
+    <mat-toolbar-row>
+        <span style="color: white;">
+            Créer un dessin
+        </span>
+        <span style="flex: 1 1 auto;"></span>
+        <span>
+            <button mat-icon-button (click)="cancel()">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content>
+
+    <mat-slider [min]='minRGB' [max]='maxRGB' [(ngModel)]='redRGB'></mat-slider>
+    <mat-form-field class="inputRGB">
+        <input matInput required placeholder="Rouge" [(ngModel)]='redRGB'>
+    </mat-form-field>
+    <mat-slider [min]='minRGB' [max]='maxRGB' [(ngModel)]='greenRGB'></mat-slider>
+    <mat-form-field class="inputRGB">
+        <input matInput required placeholder="Vert" [(ngModel)]='greenRGB'>
+    </mat-form-field>
+    <mat-slider [min]='minRGB' [max]='maxRGB' [(ngModel)]='blueRGB'></mat-slider>
+    <mat-form-field class="inputRGB">
+        <input matInput required placeholder="Bleue" [(ngModel)]='blueRGB'>
+    </mat-form-field>
+    <mat-slider [min]='minRGB' [max]='maxRGB' [(ngModel)]='opacity'></mat-slider>
+    <mat-form-field class="inputRGB">
+        <input matInput required placeholder="Opacité" [(ngModel)]='opacity'>
+    </mat-form-field>
+
+    
+        <mat-form-field class="input">
+            <input matInput required placeholder="Hauteur" [(ngModel)]='height'>
+        </mat-form-field>
+
+        <mat-form-field class="inputRGB">
+            <input matInput required placeholder="largeur" [(ngModel)]='width'>
+        </mat-form-field>
+
+</mat-dialog-content>
+  
+
+<mat-dialog-actions>
+    <button (click)="confirm()" mat-button color="primary">Confirmer</button>
+    <button (click)="cancel()" mat-button color="warn">Annuler</button>
+</mat-dialog-actions>

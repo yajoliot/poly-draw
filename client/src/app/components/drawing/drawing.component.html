@@ -1,0 +1,18 @@
+<svg #drawing oncontextmenu="return false;">
+    <g #permanentShapes></g>
+
+    <g *ngIf='this.shapeContainer.getShapesInProgress().length !== 0'>
+        <g  *ngFor = 'let shape of this.shapeContainer.getShapesInProgress()'>
+            <path #drawnShape [attr.d] = "shape.instruction" [attr.stroke] = "shape.mainColor" [attr.stroke-width] = "shape.width" [attr.fill] = "shape.fill" [attr.stroke-dasharray] = "shape.dash" [attr.stroke-linecap] = "shape.linecap" [attr.stroke-opacity] = "shape.opacity"> </path>
+        </g>
+    </g>
+</svg>
+
+<g *ngIf="isDefined">
+    {{addShapes()}}
+<g>
+
+
+<g *ngIf="isDefined">
+    {{removeShapes()}}
+<g>

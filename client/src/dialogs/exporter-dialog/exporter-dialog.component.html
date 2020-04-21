@@ -1,0 +1,71 @@
+<mat-toolbar style="margin-bottom: 5%; background-color: rgb(2,116,169);">
+    <mat-toolbar-row>
+        <span style="color: white;">
+            Exporter le desssin
+        </span>
+        <span style="flex: 1 1 auto;"></span>
+        <span>
+            <button mat-icon-button (click)="this.dialogRef.close()">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content>
+    <div>
+        <mat-form-field style="margin-right: 20px;">
+            <mat-label>Exporter Vers</mat-label>
+            <mat-select>
+                <mat-option value="true" (click)="exportTo('mail')">E-Mail</mat-option>
+                <mat-option value="false" (click)="exportTo('local')">Locale</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="margin-right: 20px;">
+            <input matInput required placeholder="Nom du dessin" [(ngModel)]='drawingName'>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="exportMethod == 'mail'">
+            <input matInput required placeholder="Recipient Du Dessin (Courriel)" [(ngModel)]='emailTo'>
+        </mat-form-field>
+
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Format</mat-label>
+            <mat-select>
+                <mat-option value="true" (click)="formatType('png')">png</mat-option>
+                <mat-option value="false" (click)="formatType('jpeg')">jpeg</mat-option>
+                <mat-option value="false" (click)="formatType('svg')">svg</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <span class="spacer"></span>
+        <mat-form-field>
+            <mat-label>Filtre</mat-label>
+            <mat-select>
+                <mat-option value="true" (click)="filter('none')">Aucun</mat-option>
+                <mat-option value="false" (click)="filter('blur')">Brouiller</mat-option>
+                <mat-option value="false" (click)="filter('grayscale')">Assombrir</mat-option>
+                <mat-option value="false" (click)="filter('invert')">Inverser la couleur</mat-option>
+                <mat-option value="false" (click)="filter('sepia')">Sépia</mat-option>
+                <mat-option value="false" (click)="filter('saturate')">Saturer</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <img #Preview style="max-width:100%; max-height:100%; border: 1px solid gray;" [src]=""/>
+    </div>
+
+    <canvas #Canvas style="height: 400px; width: 600px;">
+    </canvas>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button (click)="localExport()" *ngIf="this.exportMethod == 'local'" mat-button color="primary">Enregistrer</button>
+    <button (click)="mailExport()" *ngIf="this.exportMethod == 'mail'" mat-button color="primary">Exporter en Mail</button>
+    <button (click)="this.dialogRef.close()" mat-button color="warn">Annuler</button>
+</mat-dialog-actions>

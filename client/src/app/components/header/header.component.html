@@ -1,0 +1,181 @@
+<div class=input></div>
+<span (click)="menuClick()" style="cursor: pointer;">Poly-Dessin</span>
+<span class="spacer"></span>
+<button class="colorPicker" mat-button (click)="colorClick()">
+    Couleur: <mat-icon #colorIcon style="color: #000000;">lens</mat-icon>
+    <mat-icon #colorIcon2 style="color: #000000;">lens</mat-icon>
+</button>
+<span class="spacer"></span>
+
+<span class="spacer"></span>
+
+<span *ngIf="this.toolbox.currentTool == 'Bucket'">
+    <button mat-button (click)="toleranceInc(-1)">
+        <mat-icon>remove</mat-icon>
+    </button>
+
+    <mat-form-field>
+        <input matInput placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tolérance" [disabled]='true'
+            [(value)]="toolUtil.tolerance" style="margin-left:40%;">
+    </mat-form-field>
+    <button mat-button (click)="toleranceInc(1)">
+        <mat-icon>add</mat-icon>
+    </button>
+</span> 
+
+<span *ngIf="this.toolbox.currentTool == 'Selection'">
+    <button mat-button (click)="this.selectionTool.copy();">
+        &nbsp;&nbsp;Copier&nbsp;&nbsp;
+    </button>
+    <span class="spacer"></span>
+    <button mat-button (click)="this.selectionTool.paste();">
+        &nbsp;&nbsp;Coller&nbsp;&nbsp;
+    </button>
+    <span class="spacer"></span>
+    <button mat-button (click)="this.selectionTool.duplicate();">
+        Dupliquer
+    </button>
+    <span class="spacer"></span>
+    <button mat-button (click)="this.selectionTool.cut();">
+        &nbsp;Couper&nbsp;
+    </button>
+</span> 
+
+<span *ngIf="this.toolbox.currentTool != 'Eraser' && this.toolbox.currentTool != 'Grid' && this.toolbox.currentTool != 'Spray' && this.toolbox.currentTool != 'Bucket' && this.toolbox.currentTool != 'Selection'">
+    <button mat-button (click)="strokeSizeInc(-1)">
+        <mat-icon>remove</mat-icon>
+    </button>
+    <mat-form-field>
+        <input matInput placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Épaisseur du trait" [disabled]='true'
+            [(value)]="toolUtil.strokeSize" style="margin-left:40%;">
+    </mat-form-field>
+    <button mat-button (click)="strokeSizeInc(1)">
+        <mat-icon>add</mat-icon>
+    </button>
+</span>
+
+<span *ngIf="this.toolbox.currentTool == 'Spray'">
+    <button mat-button (click)="strokeSizeInc(-1)">
+        <mat-icon>remove</mat-icon>
+    </button>
+    <mat-form-field class="example-form-field">
+        <input matInput placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Épaisseur" [disabled]='true'
+            [(value)]="toolUtil.strokeSize" style="margin-left:40%;">
+    </mat-form-field>
+    <button mat-button (click)="strokeSizeInc(1)">
+        <mat-icon>add</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <button mat-button (click)="updateEmission(-1)">
+        <mat-icon>remove</mat-icon>
+    </button>
+    <mat-form-field class="example-form-field">
+        <input matInput placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Émission" [disabled]='true'
+            [(value)]="toolUtil.emission" style="margin-left:40%;">
+    </mat-form-field>
+    <button mat-button (click)="updateEmission(1)">
+        <mat-icon>add</mat-icon>
+    </button>
+    <span class="spacer"></span>
+    <button mat-button (click)="updateRadius(-1)">
+        <mat-icon>remove</mat-icon>
+    </button>
+    <mat-form-field class="example-form-field">
+        <input matInput placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Diamètre" [disabled]='true'
+            [(value)]="toolUtil.radius" style="margin-left:40%;">
+    </mat-form-field>
+    <button mat-button (click)="updateRadius(1)">
+        <mat-icon>add</mat-icon>
+    </button>
+</span>
+
+<span *ngIf="this.toolbox.currentTool == 'Grid'">
+    <button mat-button (click)="transparancyInc(-1)">
+        <mat-icon>remove</mat-icon>
+    </button>
+
+    <mat-form-field class="example-form-field">
+        <input matInput placeholder="&nbsp;&nbsp;&nbsp;&nbsp;Transparence" [disabled]='true'
+            [(value)]="toolUtil.transparancy" style="margin-left:40%;">
+    </mat-form-field>
+    <button mat-button (click)="transparancyInc(1)">
+        <mat-icon>add</mat-icon>
+
+    </button>
+    <span class="spacer"></span>
+    <button mat-button (click)="this.toolbox.resizeGrid(false)">
+        <mat-icon>remove</mat-icon>
+    </button>
+    <mat-form-field class="example-form-field">
+        <input matInput placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Taille" [disabled]='true'
+            [(value)]="this.gridTool.squareSize" style="margin-left:40%;">
+    </mat-form-field>
+    <button mat-button (click)="this.toolbox.resizeGrid(true)">
+        <mat-icon>add</mat-icon>
+    </button>
+</span>
+
+<span *ngIf="this.toolbox.currentTool == 'Eraser'">
+    <button mat-button (click)="eraserSizeInc(-1)">
+        <mat-icon>remove</mat-icon>
+    </button>
+
+    <mat-form-field>
+        <input matInput placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Taille de l'efface" [disabled]='true'
+            [(value)]="toolUtil.eraserSize" style="margin-left:40%;">
+    </mat-form-field>
+    <button mat-button (click)="eraserSizeInc(1)">
+        <mat-icon>add</mat-icon>
+    </button>
+</span>        
+        
+<span class="spacer"></span>
+
+<mat-form-field *ngIf="this.toolbox.currentTool == 'Line'">
+    <mat-label>Type de jonction</mat-label>
+    <mat-select [(value)]="this.linetool.point">
+        <mat-option value="true" (click)="junctionTypeClick(true)">Avec points</mat-option>
+        <mat-option value="false" (click)="junctionTypeClick(false)">Sans points</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="this.toolbox.currentTool == 'Brush'">
+    <mat-label>Texture</mat-label>
+    <mat-select [(value)]="this.toolUtil.brushType">
+        <mat-option value="Type1" (click)="brushTypeClick('Type1')">Points</mat-option>
+        <mat-option value="Type2" (click)="brushTypeClick('Type2')">Cristal</mat-option>
+        <mat-option value="Type3" (click)="brushTypeClick('Type3')">Pixel</mat-option>
+        <mat-option value="Type4" (click)="brushTypeClick('Type4')">Type 4</mat-option>
+        <mat-option value="Type5" (click)="brushTypeClick('Type5')">Type 5</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="this.toolbox.currentTool == 'Ellipse' || this.toolbox.currentTool == 'Rectangle'">
+    <mat-label>Type de tracé</mat-label>
+    <mat-select [(value)]="this.toolUtil.brushType" class="example-form-field2">
+        <mat-option value="Type1" (click)="typeEllipse('contour')">Contour</mat-option>
+        <mat-option value="Type2" (click)="typeEllipse('plein')">Plein</mat-option>
+        <mat-option value="Type3" (click)="typeEllipse('pleinaveccontour')">Plein avec contour</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<span *ngIf="this.toolbox.currentTool == 'Polygon'">
+    <button mat-button (click)="nbOfSidesInc(-1)">
+        <mat-icon>remove</mat-icon>
+    </button>
+    <mat-form-field>
+        <input matInput placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre de côtés" [disabled]='true'
+            [(value)]="toolUtil.nbSides" style="margin-left:40%;">
+    </mat-form-field>
+    <button mat-button (click)="nbOfSidesInc(1)">
+        <mat-icon>add</mat-icon>
+    </button>
+</span>
+<span class="first">
+<button md-mini-fab mat-button (click)="undo()">
+    <mat-icon>undo</mat-icon>
+</button>
+<button mat-button (click)="redo()">
+    <mat-icon>redo</mat-icon>
+</button>
+</span>

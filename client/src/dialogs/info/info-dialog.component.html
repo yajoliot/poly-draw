@@ -1,0 +1,19 @@
+<mat-toolbar style="margin-bottom: 5%; background-color: rgb(2,116,169);">
+    <mat-toolbar-row>
+        <span style="color: white;">
+            {{title}}
+        </span>
+        <span style="flex: 1 1 auto;"></span>
+        <span>
+            <button mat-icon-button (click)="closeDialog()">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content>
+        <p>{{content}}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button (click)="closeDialog()" mat-button color="primary">OK</button>
+</mat-dialog-actions>

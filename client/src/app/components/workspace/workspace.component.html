@@ -1,0 +1,13 @@
+<div #pixelRef>
+    <button mat-button (click)="createDrawingClick()" *ngIf="!this.configEnv.drawingInProgress"
+    [style.width.px]="this.windowWidth - 70"
+    [style.height.px]="this.windowHeight - 75"
+    style="color:white; background-color: purple">
+        Créer un dessin
+    </button>
+</div>
+
+<div *ngIf="this.configEnv.drawingInProgress">
+    <app-drawing (sendEventWorkspace)="receiveFromDrawing($event)" [drawingData]="drawingData"></app-drawing>
+</div>
+

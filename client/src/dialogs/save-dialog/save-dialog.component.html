@@ -1,0 +1,49 @@
+<mat-toolbar style="margin-bottom: 5%; background-color: rgb(2,116,169);">
+    <mat-toolbar-row>
+        <span style="color: white;">
+            Sauvegarder le dessin
+        </span>
+        <span style="flex: 1 1 auto;"></span>
+        <span>
+            <button mat-icon-button (click)="closeDialog(false)">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content>
+    <div>
+        <mat-form-field>
+            <input matInput required placeholder="Nom du dessin" [(ngModel)]='drawingName'>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput required placeholder="Étiquette" [(ngModel)]='labelToAdd'>
+        </mat-form-field>
+        &nbsp;
+        <button mat-raised-button (click)='addLabelClick(labelToAdd)'>
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div>
+        <button mat-raised-button *ngFor='let label of labels' style="margin: 2px" (click)="removeLabelClick(label)">
+            {{label}}
+        </button>
+    </div>
+
+    <div>
+        <img #Preview style="max-width:100%; max-height:100%; border: 1px solid gray;" [src]=""/>
+    </div>
+
+    <canvas #Canvas style="height: 400px; width: 600px;">
+    </canvas>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button (click)="closeDialog(true)" mat-button color="primary">Sauvegarder</button>
+    <button float= right; (click)="closeDialog(false)" mat-button color="warn">Annuler</button>
+</mat-dialog-actions>

@@ -40,6 +40,10 @@ yarn-error.log
 testem.log
 /typings
 !package-lock.json
+karma.conf.js
+client/coverage
+/coverage
+./coverage
 
 # System Files
 .DS_Store

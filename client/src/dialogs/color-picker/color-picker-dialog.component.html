@@ -1,0 +1,129 @@
+<mat-toolbar style="margin-bottom: 5%; background-color: rgb(2,116,169);">
+    <mat-toolbar-row>
+        <span style="color: white;">
+            Palette de couleur
+        </span>
+        <span style="flex: 1 1 auto;"></span>
+        <span>
+            <button mat-icon-button (click)="cancel()">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content>
+    
+    <div>
+        <canvas #canvas
+        class="color-slider" 
+        width="400px;" 
+        height="50px"
+        (mousedown)="onMouseDown($event)"
+        (mousemove)="onMouseMove($event)"
+        style="margin-top: 3%; margin-bottom: 3%;"
+        ></canvas>
+    </div>
+
+    <mat-form-field>
+        <mat-label>Rouge (0-255)</mat-label>
+        <input matInput [(ngModel)]="red" (ngModelChange)="inputChange()" style="margin: 2%;">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Vert (0-255)</mat-label>
+        <input matInput [(ngModel)]="green" (ngModelChange)="inputChange()" style="margin: 2%;">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Bleue (0-255)</mat-label>
+        <input matInput [(ngModel)]="blue" (ngModelChange)="inputChange()" style="margin: 2%;">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Red HEX(00-FF)</mat-label>
+        <input matInput [(ngModel)]="redHex" (ngModelChange)="inputChangeHexRed()" style="margin: 2%;">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Green HEX(00-FF)</mat-label>
+        <input matInput [(ngModel)]="greenHex" (ngModelChange)="inputChangeHexGreen()" style="margin: 2%;">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Blue HEX (00-FF)</mat-label>
+        <input matInput [(ngModel)]="blueHex" (ngModelChange)="inputChangeHexBlue()" style="margin: 2%;">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Opacité (0-1)</mat-label>
+        <input matInput [(ngModel)]="opacity" (ngModelChange)="inputChange()" style="margin: 2%;">
+    </mat-form-field>
+
+
+    
+
+    <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+        <mat-tab label="Couleur primaire">
+            <mat-label style="margin-top: 2%;">Aperçu</mat-label>
+            <div>
+                <mat-icon #colorPreview style="font-size: 100px;">lens</mat-icon>
+            </div>
+            <mat-label>Primaire et secondaire</mat-label>
+            <button mat-button 
+                (click)="switch()">
+                <i class="material-icons">sync_alt</i>
+            </button>
+            <div >
+                <mat-icon *ngFor="let color of this.toolUtil.colors.slice(0,2)" (click)="iconClick($event)"[style.color]="color" style="font-size: 70px; margin-left: 10%;">lens</mat-icon>
+            </div>
+            
+            <mat-label>Historique</mat-label>
+            <div>
+                <mat-icon *ngFor="let color of this.toolUtil.colors.slice(2,12)" (click)="iconClick($event)" [style.color]="color" style="font-size: 50px; margin-left:5%;">lens</mat-icon>
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Couleur secondaire">
+            <mat-label style="margin-top: 2%;">Aperçu</mat-label>
+            <div>
+                <mat-icon #colorPreview2 style="font-size: 100px;">lens</mat-icon>
+            </div>
+            <mat-label>Primaire et secondaire</mat-label>
+            <button mat-button 
+                (click)="switch()">
+                <i class="material-icons">sync_alt</i>
+            </button>
+            <div >
+                <mat-icon *ngFor="let color of this.toolUtil.colors.slice(0,2)" (click)="iconClick($event)" [style.color]="color" style="font-size: 70px; margin-left: 10%;">lens</mat-icon>
+            </div>
+            <mat-label>Historique</mat-label>
+            <div>
+                <mat-icon *ngFor="let color of this.toolUtil.colors.slice(2,10)" (click)="iconClick($event)" [style.color]="color" style="font-size: 50px; margin-left:5%;">lens</mat-icon>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Background Color">
+            <mat-label style="margin-top: 2%;">Aperçu</mat-label>
+            <div>
+                <mat-icon #colorPreview3 style="font-size: 100px;">lens</mat-icon>
+            </div>
+            <mat-label>Primaire et secondaire</mat-label>
+            <button mat-button 
+                (click)="switch()">
+                <i class="material-icons">sync_alt</i>
+            </button>
+            <div >
+                <mat-icon *ngFor="let color of this.toolUtil.colors.slice(0,2)" (click)="iconClick($event)" [style.color]="color" style="font-size: 70px; margin-left: 10%;">lens</mat-icon>
+            </div>
+            <mat-label>Historique</mat-label>
+            <div>
+                <mat-icon *ngFor="let color of this.toolUtil.colors.slice(2,10)" (click)="iconClick($event)" [style.color]="color" style="font-size: 50px; margin-left:5%;">lens</mat-icon>
+            </div>
+        </mat-tab>
+        
+    </mat-tab-group>
+    
+    
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button (click)="confirm()" mat-button color="primary">Confirmer</button>
+    <button (click)="cancel()" mat-button color="warn">Annuler</button>
+</mat-dialog-actions>

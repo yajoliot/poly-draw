@@ -1,0 +1,11 @@
+<mat-toolbar #toolbarRef fullscreen style="background-color: rgb(2,116,169); color: white; height: 75px">
+  <app-header></app-header>
+</mat-toolbar>
+<mat-sidenav-container #maxPixelValues style="height: 91%;">
+    <mat-sidenav #sideNavRef class="toolbox" mode="side" [opened]="true" style="width:75px;">
+        <app-toolbar ></app-toolbar>
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color: lightgray;">
+      <app-workspace #pixelRef></app-workspace>
+    </mat-sidenav-content>
+</mat-sidenav-container>

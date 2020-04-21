@@ -12,6 +12,7 @@ module.exports = function(config) {
             require('karma-jasmine-html-reporter'),
             require('karma-coverage-istanbul-reporter'),
             require('@angular-devkit/build-angular/plugins/karma'),
+            "karma-spec-reporter"
         ],
         client: {
             clearContext: false, // leave Jasmine Spec Runner output visible in browser
@@ -22,22 +23,14 @@ module.exports = function(config) {
             fixWebpackSourcePaths: true,
             combineBrowserReports: true,
         },
-        reporters: ['progress', 'kjhtml'],
+        reporters: ['dots', 'spec', 'progress', 'kjhtml'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        singleRun: true,
-        browsers: ['Chrome', 'ChromeHeadlessNoSandbox', 'Firefox', 'FirefoxHeadless'],
+        singleRun: false,
+        browsers: ['Chrome'],
         customLaunchers: {
-            FirefoxHeadless: {
-                base: 'Firefox',
-                flags: ['-headless'],
-            },
-            ChromeHeadlessNoSandbox: {
-                base: 'ChromeHeadless',
-                flags: ['--no-sandbox'],
-            },
         },
     });
 };

@@ -1,0 +1,186 @@
+<mat-toolbar style="background-color: rgb(2,116,169); color: white; height: 75px">
+    <span>Poly-Dessin guide de l'utilisateur</span>
+</mat-toolbar>
+<mat-sidenav-container #maxPixelValues style="height: 91%;">
+    <mat-sidenav #sideNavRef class="toolbox" mode="side" [opened]="true" style="width:150px;">
+
+        <button mat-button class="button1" #Welcome (click)="selectTool(1)">Bienvenue</button>
+        <mat-accordion #accordion="matAccordion" [multi]="true">
+            <mat-expansion-panel class="panel">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="title">
+                        Généralités
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-action-row>
+                    <button class="button2" mat-button #Continuer (click)="selectTool(2)">Continuer un dessin</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #SauvegardeAuto (click)="selectTool(3)">Sauvegarde auto</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Sauvegarder (click)="selectTool(4)">Sauvegarder</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Galerie (click)="selectTool(5)">Galerie</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Filtrage (click)="selectTool(6)">Filtrage</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Exporter (click)="selectTool(7)">Exporter</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+
+
+            <mat-expansion-panel class="panel">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="title">
+                        Outils
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-action-row>
+                    <button class="button2" mat-button #Pencil (click)="selectTool(8)">Crayon</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Brush (click)="selectTool(9)">Pinceau</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Line (click)="selectTool(10)">Ligne</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Efface (click)="selectTool(11)">Efface</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Selection (click)="selectTool(12)">Sélection</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #DeplacementSelection
+                        (click)="selectTool(13)">Actions Sélection</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Grille (click)="selectTool(14)">Grille</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Annuler (click)="selectTool(15)">Annuler/Refaire</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Sceau (click)="selectTool(16)">Sceau de peinture</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+            <mat-expansion-panel class="panel">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="title">
+                        Formes
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-action-row>
+                    <button class="button2" mat-button #Rectangle (click)="selectTool(17)">Rectangle</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Polygone (click)="selectTool(18)">Polygone</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button class="button2" mat-button #Ellipse (click)="selectTool(19)">Ellipse</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="panel">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="title">
+                        Couleur
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-action-row>
+                    <button mat-button class="button2" #Color (click)="selectTool(20)">Palette</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button mat-button class="button2" #Applicateur (click)="selectTool(21)">Applicateur</button>
+                </mat-action-row>
+                <mat-action-row>
+                    <button mat-button class="button2" #Pipette (click)="selectTool(22)">Pipette</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <div class="second">
+            <button mat-button class="button3"
+                (click)="toggleExpandState()">{{ allExpandState ? "Réduire" : "Agrandir" }}</button>
+        </div>
+        <div class="input"></div>
+        <div class="first">
+            <button mat-button #UserGuide class="button3" (click)="cancel()">
+                <mat-icon>undo</mat-icon>
+            </button>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content style="background-color: white;">
+        <mat-card>
+            <mat-card-header style="text-align:center">
+                <div style="text-align:center">
+                    <h1 style="text-align:center">
+                        {{welcomeGuide}}
+                        {{pencilGuide}}
+                        {{brushGuide}}
+                        {{lineGuide}}
+                        {{rectangleGuide}}
+                        {{colorGuide}}
+                        {{annulerGuide}}
+                        {{sauvegarderGuide}}
+                        {{galerieGuide}}
+                        {{filtrageGuide}}
+                        {{exporterGuide}}
+                        {{selectionGuide}}
+                        {{deplacementSelectionGuide}}
+                        {{effaceGuide}}
+                        {{applicateurGuide}}
+                        {{pipetteGuide}}
+                        {{polygoneGuide}}
+                        {{ellipseGuide}}
+                        {{grilleGuide}}
+                        {{continuerGuide}}
+                        {{sceauGuide}}
+                        {{sauvegardeAutoGuide}}
+                    </h1>
+                </div>
+            </mat-card-header>
+            <mat-card-subtitle>
+                {{welcomeGuide2}}
+                {{pencilGuide2}}
+                {{brushGuide2}}
+                {{lineGuide2}}
+                {{rectangleGuide2}}
+                {{colorGuide2}}
+                {{annulerGuide2}}
+                {{sauvegarderGuide2}}
+                {{galerieGuide2}}
+                {{filtrageGuide2}}
+                {{exporterGuide2}}
+                {{selectionGuide2}}
+                {{deplacementSelectionGuide2}}
+                {{effaceGuide2}}
+                {{applicateurGuide2}}
+                {{pipetteGuide2}}
+                {{polygoneGuide2}}
+                {{ellipseGuide2}}
+                {{grilleGuide2}}
+                {{continuerGuide2}}
+                {{sceauGuide2}}
+                {{sauvegardeAutoGuide2}}
+            </mat-card-subtitle>
+            <mat-card-content>
+                <p></p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button style="background-color: rgb(2,116,169); color: white;" *ngIf="visiblePrevious()" #Previous
+                    mat-button (click)="previous()">Précédant</button>
+                <button style="background-color: rgb(2,116,169); color: white;" *ngIf="visibleNext()" #Next mat-button
+                    (click)="next()">&nbsp; Suivant &nbsp;</button>
+            </mat-card-actions>
+        </mat-card>
+        <img mat-card-image
+            src="https://images.pexels.com/photos/3109807/pexels-photo-3109807.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+    </mat-sidenav-content>
+</mat-sidenav-container>
