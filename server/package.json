@@ -36,7 +36,7 @@
     },
     "dependencies": {
         "@types/mongoose": "^5.7.3",
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "blob": "^0.1.0",
         "body-parser": "^1.18.3",
         "chai-http": "^4.3.0",
